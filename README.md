@@ -1,15 +1,17 @@
 # mock-api
 
-### 原理
+## 原理
 
 基于 [Okhttp](https://github.com/square/okhttp) 的 [Interceptor](https://github.com/square/okhttp/wiki/Interceptors) ：**如果目标url需要mock，则从本地（assets目录或sdcard）读取数据，否则继续向外发送请求。**
 
 
-### 使用
+## 使用
 
 在`build.gradle`中添加以下依赖：
 
-TODO
+```
+    compile 'com.shanbay.android:mock-api:0.0.1'
+```
 
 准备mock数据，比如对于请求：`/api/user/` 我们期望返回：
 
@@ -38,7 +40,7 @@ OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
 
 这时候请求`/api/user/`，你会发现返回了我们刚才mock的数据 ;-)
 
-### 进阶
+## 更多
 **MockApiSuite**
 
 当我们mock很多api的时候，如果只是简单聚合这些api将会非常的凌乱&难以管理，所以我们建立了Suite的概念，把相同业务场景的api放到一个suite中（比如分为account模块、purchase模块），这样对于之后的更新、维护都非常方便。
@@ -53,6 +55,6 @@ StandardMockApi用来声明一个需要mock的api，其中第一个参数表示�
 
 **Mock数据**
 
-- 约定mock数据存放在： mockdata/[suite_name]/中，
+- 约定mock数据存放在： mockdata/[suite_name]/中；
 - 通过MockApiInterceptor的第二个构造参数，指定mock数据是放在sdcard根目录，还是assets根目录（默认）；
 
