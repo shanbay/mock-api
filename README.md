@@ -14,13 +14,14 @@
 ```
     compile 'com.shanbay.android:mock-api:0.0.1'
 ```
+
 2. 准备mock数据，比如对于请求：/api/user/ 我们期望返回：
 ```
     {
         username: "shanbay"
     }
 ```
- 我们将上述内容保存为`user.json`，然后放在assets目录下的`mockdata/account/``目录中（这里的account是suite-name，后面会介绍）;
+ 我们将上述内容保存为`user.json`，然后放在assets目录下的`mockdata/account/`目录中（这里的account是suite-name，后面会介绍）;
 
 3. 创建Client，增加以下配置：
 ```java
@@ -35,7 +36,7 @@
         .addInterceptor(new UserAgentInterceptor(context));
         ....
 ```
-这时候请求/api/user/，你会发现返回了我们刚才mock的数据 ;-)
+ 这时候请求/api/user/，你会发现返回了我们刚才mock的数据 ;-)
 
 
 ### 更多
